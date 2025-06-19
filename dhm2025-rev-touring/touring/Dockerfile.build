@@ -1,0 +1,12 @@
+FROM debian:bookworm
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        build-essential libcap-dev liburing-dev make && \
+    rm -rf /var/lib/apt/lists
+
+COPY . /src
+WORKDIR /src
+RUN make
+
+CMD ["/usr/bin/cat", "/src/touring"]
