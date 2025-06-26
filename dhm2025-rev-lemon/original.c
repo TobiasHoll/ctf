@@ -60,8 +60,8 @@ const int height = 20;
     // Step 1: No same values next to each other, even diagonally.
     for (int r = 0; r < height; ++r)
         for (int c = 0; c < width; ++c)
-            for (int dr = r > 0 ? -1 : 0; dr <= (r < height - 1) ? 1 : 0; ++dr)
-                for (int dc = c > 0 ? -1 : 0; dc <= (c < width - 1) ? 1 : 0; ++dc)
+            for (int dr = r > 0 ? -1 : 0; dr < (r < height - 1) ? 1 : 0; ++dr)
+                for (int dc = c > 0 ? -1 : 0; dc < (c < width - 1) ? 1 : 0; ++dc)
                     if (dr || dc)
                         error |= values[(r + dr) * width + c + dc] == values[r * width + c];
 
