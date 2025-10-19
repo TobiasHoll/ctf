@@ -1,0 +1,20 @@
+name: qdiscworld
+
+services:
+  qdiscworld:
+    image: flu.xxx/qdiscworld
+    build: .
+    pull_policy: never
+    container_name: qdiscworld
+    hostname: qdiscworld
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: 1
+      net.ipv4.conf.default.rp_filter: 0
+    ports:
+      - "14899:14899/udp"
+
+networks:
+  default:
+    name: qdiscworld
